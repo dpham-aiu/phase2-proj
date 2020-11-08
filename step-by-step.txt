@@ -1,0 +1,16 @@
+1. Created Angular Project
+    -Added bootstrap, jquery and popperjs via npm
+
+2. Added component javascript-quiz and html5-quiz.
+    -worked on html template for javascript-quiz.
+
+3. Added service class, QuizService to handle requests with httpclient.
+    -created a function to call to a static json file to grab javascript questions.
+    -made javascript-questions.json file to hold quiz questions for js.
+
+4. Created a http get call to json file to grab js questions. 
+    -made a model class mode.jsquestions.ts to map response data.
+    -made a function to call this get call in javascript-quiz component.
+    -tested to make sure data was correct.
+    -created html to display the data on the screen.
+    -worked on css and html of the quiz form.

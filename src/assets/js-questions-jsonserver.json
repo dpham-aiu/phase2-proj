@@ -1,0 +1,38 @@
+{"question": [
+    {"id": 1, "question":"What is the tag for adding javascript to your html?", "answers":[
+        {"answer": "<table>", "iscorrect":"incorrect"},
+        {"answer": "<s>", "iscorrect":"incorrect"},
+        {"answer": "<script>", "iscorrect":"correct"},
+        {"answer": "<hr>", "iscorrect":"incorrect"}
+        ]
+    },
+    {"id": 2, "question":"What is the call-back function for catching errors in promises?", "answers":[
+        {"answer": ".then()", "iscorrect":"incorrect"},
+        {"answer": ".say()", "iscorrect":"incorrect"},
+        {"answer": ".error()", "iscorrect":"incorrect"},
+        {"answer": ".catch()", "iscorrect":"correct"}
+        ]
+    },
+    {"id": 3, "question":"How do you make a anonymous function?", "answers":[
+        {"answer": "() => {}", "iscorrect":"correct"},
+        {"answer": "function(){}", "iscorrect":"incorrect"},
+        {"answer": "let x = function(){}", "iscorrect":"incorrect"},
+        {"answer": "I don't know", "iscorrect":"incorrect"}
+        ]
+    },
+    {"id": 4, "question":"How do you grab an element from the dom?", "answers":[
+        {"answer": "window.getElementById()", "iscorrect":"incorrect"},
+        {"answer": "show.element()", "iscorrect":"incorrect"},
+        {"answer": "document.getElementById()", "iscorrect":"correct"},
+        {"answer": "console.getElement()", "iscorrect":"incorrect"}
+        ]
+    },
+    {"id": 5, "question":"What data type is not supported by JavaScript?", "answers":[
+        {"answer": "Boolean", "iscorrect":"incorrect"},
+        {"answer": "int", "iscorrect":"correct"},
+        {"answer": "Object", "iscorrect":"incorrect"},
+        {"answer": "Symbol", "iscorrect":"incorrect"}
+        ]
+    }
+]
+}

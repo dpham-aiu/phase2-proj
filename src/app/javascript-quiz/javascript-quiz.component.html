@@ -1,0 +1,107 @@
+<div class="container" *ngIf="loaded && submitted != true">
+  <br />
+  <br />
+  <form
+    [formGroup]="questionForm"
+    (ngSubmit)="nextQuestion()"
+    class="formgroup"
+  >
+    <div class="text-center">
+      <h1>
+        <span class="questionNumber"
+          >({{ index }}/{{ jsQuestionList.length }})</span
+        >
+        {{ currentQuestion.question }}
+      </h1>
+    </div>
+    <div class="container">
+      <div class="row border-top">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <label
+            ><h3>A. {{ currentQuestion.answers[0].answer }}</h3></label
+          >
+          <input
+            name="quizAnswer"
+            type="radio"
+            [value]="currentQuestion.answers[0].iscorrect"
+          />
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <label
+            ><h3>B. {{ currentQuestion.answers[1].answer }}</h3></label
+          >
+          <input
+            name="quizAnswer"
+            type="radio"
+            [value]="currentQuestion.answers[1].iscorrect"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <label
+            ><h3>C. {{ currentQuestion.answers[2].answer }}</h3></label
+          >
+          <input
+            type="radio"
+            name="quizAnswer"
+            [value]="currentQuestion.answers[2].iscorrect"
+          />
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <label
+            ><h3>D. {{ currentQuestion.answers[3].answer }}</h3></label
+          >
+          <input
+            type="radio"
+            name="quizAnswer"
+            [value]="currentQuestion.answers[3].iscorrect"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 text-right">
+          <input
+            *ngIf="index <= jsQuestionList.length - 1"
+            type="button"
+            value="Next"
+            class="btn btn-primary"
+            (click)="nextQuestion()"
+          />
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 text-left">
+          <input
+            type="submit"
+            value="Submit"
+            class="btn btn-success"
+            (click)="submitAnswers()"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<br />
+<br />
+<div class="container grayBackground" *ngIf="submitted">
+  <h1>Your Results: {{ percentageCorrect }}%</h1>
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <table class="table">
+        <thead>
+          <th scope="col">Question#</th>
+          <th scope="col">Answers</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of userAnswers; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ x }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 text-center">
+      <button (click)="restartTest()">Restart Test</button>
+    </div>
+  </div>
+</div>
