@@ -39,3 +39,7 @@
     -changed style of restart button to btn-warning
 
 11. Removed html5-quiz and drop down selection
+
+12. Add timer aspect and functionality.
+    -changed html to include timer for user to see and be restricted to.
+    -Showed time left when user is finished.
