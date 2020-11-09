@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { JSQuestion } from '../model.jsquestion';
+import { JSQuestion, Answers } from '../model.jsquestion';
 import { QuizService } from '../quiz.service';
 
 @Component({
@@ -11,11 +11,13 @@ import { QuizService } from '../quiz.service';
 export class JavascriptQuizComponent implements OnInit {
   loaded: boolean = false; //used to display elements when page is fully loaded.
   currentQuestion: JSQuestion; //used to keep track of current question
-  userAnswers: String[] = []; //used to hold values of user answers.
+  userAnswers: string[] = []; //used to hold values of user answers.
   jsQuestionList: JSQuestion[]; //tuple of questions from json data
   submitted: boolean = false; //checks to see if form was submitted.
   index: number = 0; //index to keep track of current question
   percentageCorrect: any; //percent of user's correct answers.
+  popUpMsg: string;
+  onTime: boolean = true;
   /**
    * Formgroup that hands user quiz form.
    */
@@ -23,11 +25,42 @@ export class JavascriptQuizComponent implements OnInit {
     quizAnswer: new FormControl(),
   });
 
+  /**
+   * Timer attribute
+   */
+  counter: { min: number; sec: number };
+
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     //Grabbing questions for json file.
     this.grapQuestions();
+    this.startTimer();
+  }
+
+  /**
+   * Function that handles the timer functionality.
+   */
+  startTimer() {
+    this.counter = { min: 5, sec: 0 };
+    let intervalId = setInterval(() => {
+      if (this.onTime == false) {
+        clearInterval(intervalId);
+      }
+      if (this.counter.sec - 1 == -1) {
+        this.counter.min -= 1;
+        this.counter.sec = 59;
+      } else this.counter.sec -= 1;
+      if (this.counter.min === 0 && this.counter.sec == 0) {
+        clearInterval(intervalId);
+        this.onTime = false;
+        this.submitted = true;
+        if (this.userAnswers.length == 0) {
+          this.percentageCorrect = '0';
+          this.popUpMsg = 'You did not answer any questions.';
+        }
+      }
+    }, 1000);
   }
 
   //Grabs data from quiz service and sets data in jsQuestionList tuple.
@@ -86,6 +119,7 @@ export class JavascriptQuizComponent implements OnInit {
    */
   submitAnswers() {
     var radio = document.getElementsByTagName('input');
+    this.onTime = false;
     for (var i = 0; i < radio.length; i++) {
       if (radio[i].type == 'radio' && radio[i].checked) {
         this.userAnswers.push(radio[i].value);
@@ -94,6 +128,12 @@ export class JavascriptQuizComponent implements OnInit {
     }
     this.percentageCorrect = this.calculateCorrectAnswers();
     this.submitted = true;
+    if (this.percentageCorrect >= 80) {
+      this.popUpMsg = 'You have pass the quiz and will be reached by our team!';
+    } else {
+      this.popUpMsg =
+        'You have failed the quiz. Please press the restart to retake the quiz.';
+    }
   }
 
   /**

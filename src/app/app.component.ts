@@ -16,6 +16,10 @@ export interface INavLink {
 export class AppComponent {
   startHit: boolean = false;
   selectedNavLink: INavLink;
+
+  /**
+   * Was used to switch between quiz type
+   */
   navLinks: Array<INavLink> = [
     { pathLink: 'javascript-quiz', label: 'JavaScript', id: 1 },
     { pathLink: 'html5-quiz', label: 'HTML5', id: 2 },

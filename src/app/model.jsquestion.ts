@@ -7,5 +7,5 @@ export class JSQuestion {
 }
 
 export class Answers {
-  constructor(public answer: string, public iscorrect: boolean) {}
+  constructor(public answer: string, public iscorrect: string) {}
 }

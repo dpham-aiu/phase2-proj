@@ -14,3 +14,28 @@
     -tested to make sure data was correct.
     -created html to display the data on the screen.
     -worked on css and html of the quiz form.
+
+5. Added a function group to javascript quiz.
+    -The form appears when user clicks "Start"
+    -The form now renders all possible answers and the question.
+    -Added next button functionality to go to next question.
+    -Added submit button and its functionality
+
+6. Submitting the form will open another div that displays results
+    -Created a table to display user results based on what questions were correct and incorrect
+    - reset button will refresh the page and allow the user to retake the quiz.
+
+7. Added both a regular json file path for service and a json-server url option.
+
+8. Added timer functionality.
+    -Timer is set to 5 min by default.
+    -Shows time remaining in user result.
+    -Once timer runs out it auto submits the form.
+    -diplay for quiz dissapears when timer is reached.
+
+9. Added questions to be shown on result table.
+
+10. Styling changes to make design responsive.
+    -changed style of restart button to btn-warning
+
+11. Removed html5-quiz and drop down selection

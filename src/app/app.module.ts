@@ -5,10 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JavascriptQuizComponent } from './javascript-quiz/javascript-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Html5QuizComponent } from './html5-quiz/html5-quiz.component';
 
 @NgModule({
-  declarations: [AppComponent, JavascriptQuizComponent, Html5QuizComponent],
+  declarations: [AppComponent, JavascriptQuizComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

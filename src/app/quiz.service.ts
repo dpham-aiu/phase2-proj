@@ -16,6 +16,7 @@ export class QuizService {
   }
 
   //Get request to json server
+  //Use json-server on C:\Users\danny\OneDrive\Documents\phase2-proj-danny-pham\src\assets\js-questions-jsonserver.json
   grabDataUsingJsonServer(): Observable<JSQuestion[]> {
     return this.http.get<JSQuestion[]>(this.jsJsonServerURL);
   }

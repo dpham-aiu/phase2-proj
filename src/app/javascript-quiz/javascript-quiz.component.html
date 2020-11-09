@@ -1,4 +1,4 @@
-<div class="container" *ngIf="loaded && submitted != true">
+<div class="container" *ngIf="loaded && submitted != true && onTime">
   <br />
   <br />
   <form
@@ -13,6 +13,7 @@
         >
         {{ currentQuestion.question }}
       </h1>
+      <h1>{{ counter.min }} : {{ counter.sec }}</h1>
     </div>
     <div class="container">
       <div class="row border-top">
@@ -26,7 +27,7 @@
             [value]="currentQuestion.answers[0].iscorrect"
           />
         </div>
-        <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="col-md-12 col-lg-6 col-sm-12">
           <label
             ><h3>B. {{ currentQuestion.answers[1].answer }}</h3></label
           >
@@ -38,7 +39,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="col-md-12 col-lg-6 col-sm-12">
           <label
             ><h3>C. {{ currentQuestion.answers[2].answer }}</h3></label
           >
@@ -48,7 +49,7 @@
             [value]="currentQuestion.answers[2].iscorrect"
           />
         </div>
-        <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="col-md-12 col-lg-6 col-sm-12">
           <label
             ><h3>D. {{ currentQuestion.answers[3].answer }}</h3></label
           >
@@ -83,25 +84,36 @@
 </div>
 <br />
 <br />
+
+<!--RESULT DIV-->
 <div class="container grayBackground" *ngIf="submitted">
   <h1>Your Results: {{ percentageCorrect }}%</h1>
+  <p>Your time was {{ counter.min }} : {{ counter.sec }}.</p>
+  <p>{{ popUpMsg }}</p>
   <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12">
       <table class="table">
         <thead>
           <th scope="col">Question#</th>
-          <th scope="col">Answers</th>
+          <th scope="col">Result</th>
+          <th scope="col">Question</th>
         </thead>
         <tbody>
           <tr *ngFor="let x of userAnswers; let i = index">
             <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ jsQuestionList[i].question }}
+            </td>
             <td>{{ x }}</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 text-center"></div>
     <div class="col-md-12 col-lg-12 col-sm-12 text-center">
-      <button (click)="restartTest()">Restart Test</button>
+      <button class="btn btn-warning" (click)="restartTest()">
+        Restart Test
+      </button>
     </div>
   </div>
 </div>
